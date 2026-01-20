@@ -330,7 +330,10 @@ export default function NotesPage() {
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <button
-                              onClick={(e) => e.preventDefault()}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                              }}
                               className="rounded p-1 text-gray-400 opacity-0 hover:bg-gray-100 group-hover:opacity-100 dark:hover:bg-gray-800"
                             >
                               <MoreVertical className="h-4 w-4" />
@@ -340,6 +343,7 @@ export default function NotesPage() {
                             <DropdownMenuItem
                               onClick={(e) => {
                                 e.preventDefault();
+                                e.stopPropagation();
                                 router.push(`/notes/${note.id}`);
                               }}
                             >
@@ -347,7 +351,10 @@ export default function NotesPage() {
                               Edit
                             </DropdownMenuItem>
                             <DropdownMenuItem
-                              onClick={(e) => handleDeleteNote(e, note.id)}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDeleteNote(e, note.id);
+                              }}
                               className="text-red-600"
                             >
                               <Trash2 className="mr-2 h-4 w-4" />
