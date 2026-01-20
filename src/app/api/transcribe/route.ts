@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
     // Transcribe the audio
     console.log("Transcribing...");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result = await whisper(audioData as any, {
+    const result = await (whisper as any)(audioData, {
       chunk_length_s: 30,
       stride_length_s: 5,
       language: "english",
